@@ -94,7 +94,7 @@ if st.session_state["authentication_status"]:
     # sorted = sort_items(server_state.dat, multi_containers=True)
     if st.session_state.show_sorted:
         sorted = sort_items(server_state.dat, multi_containers=True)
-    # server_state.dat = sorted.copy()
+        server_state.dat = sorted.copy()
     # draggable_item = sorted
     # for container in server_state.dat:
     #     if draggable_item in container['items']:
