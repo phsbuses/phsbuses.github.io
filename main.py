@@ -89,12 +89,14 @@ if st.session_state["authentication_status"]:
                 if row_flag==False:
                     st.warning("Please enter a valid original bus number")
 
-    if st.button('Show drag and drop' if not st.session_state.show_sorted else 'Hide drag and drop'):
+    if st.button('Show sorted items' if not st.session_state.show_sorted else 'Hide sorted items'):
         st.session_state.show_sorted = not st.session_state.show_sorted
     # sorted = sort_items(server_state.dat, multi_containers=True)
     if st.session_state.show_sorted:
-        sorted = sort_items(server_state.dat, multi_containers=True)
-        server_state.dat = sorted.copy()
+        try:
+            sorted = sort_items(server_state.dat, multi_containers=True)
+        except IndexError:
+            st.error("One or more rows is filled")
     # server_state.dat = sorted.copy()
     # draggable_item = sorted
     # for container in server_state.dat:
