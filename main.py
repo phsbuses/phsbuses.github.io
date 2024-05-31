@@ -109,18 +109,6 @@ if st.session_state["authentication_status"]:
     # while (len(data2[1]['items']) < 7):
     #     server_state.dat2[1]['items'].insert(0,'none')
 
-    # items1 = server_state.dat2[0]['items']
-    # cols = st.columns(len(items1))
-    # for i, item in enumerate(items1):
-    #     with cols[i]:
-    #         st.button(item, key=f"sorted1_{i}")
-
-    # items2 = server_state.dat2[1]['items']
-    # cols = st.columns(len(items2))
-    # for i, item in enumerate(items2):
-    #     with cols[i]:
-    #         st.button(item, key=f"sorted2_{i}")
-
     data = server_state.dat
 
     # # st.write(sorted)
@@ -134,18 +122,26 @@ elif st.session_state["authentication_status"] is None:
     st.warning('For admins only: please enter your username and password')
     st.title('Student: Bus viewing')
 
+# items1 = server_state.dat2[0]['items']
+# cols = st.columns(len(items1))
+# for i, item in enumerate(items1):
+#     with cols[i]:
+#         st.button(item, key=f"sorted3_{i}")
+
+# items2 = server_state.dat2[1]['items']
+# cols = st.columns(len(items2))
+# for i, item in enumerate(items2):
+#     with cols[i]:
+#         st.button(item, key=f"sorted4_{i}")
+
 items1 = server_state.dat2[0]['items']
-cols = st.columns(len(items1))
+cols = st.columns(10)
 for i, item in enumerate(items1):
     with cols[i]:
         st.button(item, key=f"sorted3_{i}")
 
 items2 = server_state.dat2[1]['items']
-cols = st.columns(len(items2))
+cols = st.columns(10)
 for i, item in enumerate(items2):
     with cols[i]:
         st.button(item, key=f"sorted4_{i}")
-
-
-
-
