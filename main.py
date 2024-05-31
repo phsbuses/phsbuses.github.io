@@ -48,9 +48,9 @@ if 'dat' not in server_state:
     {'header':'Loops','items':['Outer','1234', '2345', '3345']},
     {'items':['Inner','2341', '2314', '1525']},
     {'header':'Extra rows','items':['----','4567']},
-    {'items':['----','4676']},
-    {'items':['----','4677']},
-    {'items':['----','4678']}
+    {'items':['---1','4676']},
+    {'items':['---2','4677']},
+    {'items':['---3','4678']}
     ]
 if 'dat2' not in server_state:
     server_state.dat2 = server_state.dat.copy()
