@@ -25,6 +25,8 @@
 #     st.warning('Please enter your username and password')
 
 import streamlit as st
+import pandas as pd
+import numpy as np
 from streamlit_sortables import sort_items
 from streamlit_server_state import server_state, server_state_lock
 import yaml
@@ -43,7 +45,6 @@ authenticator = stauth.Authenticate(
 
 if 'flag' not in server_state:
     server_state.flag = False
-
 if 'dat' not in server_state:
     server_state.dat = [
     {'header':'Loops','items':['Outer','1234', '2345', '3345']},
@@ -55,6 +56,8 @@ if 'dat' not in server_state:
     ]
 if 'dat2' not in server_state:
     server_state.dat2 = server_state.dat.copy()
+if 'show_sorted' not in st.session_state:
+    st.session_state.show_sorted = False
 
 name, authentication_status, username = authenticator.login(fields={'Form name':'Login', 'Username':'Username', 'Password':'Password','Login':'Login'})
 print(st.session_state["authentication_status"])
@@ -86,8 +89,13 @@ if st.session_state["authentication_status"]:
                     st.warning("Please enter a valid original bus number")
 
     # if st.button('Show'):
-    sorted = sort_items(server_state.dat, multi_containers=True)
-    server_state.dat = sorted.copy()
+    if st.button('Show sorted items' if not st.session_state.show_sorted else 'Hide sorted items'):
+        st.session_state.show_sorted = not st.session_state.show_sorted
+    # sorted = sort_items(server_state.dat, multi_containers=True)
+    if st.session_state.show_sorted:
+        sorted = sort_items(server_state.dat, multi_containers=True)
+        server_state.dat = sorted.copy()
+    # server_state.dat = sorted.copy()
     # draggable_item = sorted
     # for container in server_state.dat:
     #     if draggable_item in container['items']:
@@ -137,5 +145,7 @@ cols = st.columns(len(items2))
 for i, item in enumerate(items2):
     with cols[i]:
         st.button(item, key=f"sorted4_{i}")
+
+
 
 
