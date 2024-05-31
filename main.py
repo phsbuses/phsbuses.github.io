@@ -25,8 +25,6 @@
 #     st.warning('Please enter your username and password')
 
 import streamlit as st
-import pandas as pd
-import numpy as np
 from streamlit_sortables import sort_items
 from streamlit_server_state import server_state, server_state_lock
 import yaml
@@ -83,13 +81,15 @@ if st.session_state["authentication_status"]:
                 for row in range(6):
                     for i in range(len(server_state.dat[row]['items'])):
                         if (server_state.dat[row]['items'][i][0:4]==orig_num):
-                            server_state.dat[row]['items'][i] = str(orig_num)+"\n ("+str(sub_num)+")"
+                            if sub_num=='':
+                                server_state.dat[row]['items'][i] = str(orig_num)
+                            else:
+                                server_state.dat[row]['items'][i] = str(orig_num)+"\n ("+str(sub_num)+")" 
                             row_flag=True
                 if row_flag==False:
                     st.warning("Please enter a valid original bus number")
 
-    # if st.button('Show'):
-    if st.button('Show sorted items' if not st.session_state.show_sorted else 'Hide sorted items'):
+    if st.button('Show drag and drop' if not st.session_state.show_sorted else 'Hide drag and drop'):
         st.session_state.show_sorted = not st.session_state.show_sorted
     # sorted = sort_items(server_state.dat, multi_containers=True)
     if st.session_state.show_sorted:
