@@ -135,13 +135,13 @@ elif st.session_state["authentication_status"] is None:
 #         st.button(item, key=f"sorted4_{i}")
 
 items1 = server_state.dat2[0]['items']
-cols = st.columns(10)
+cols = st.columns(9)
 for i, item in enumerate(items1):
     with cols[i]:
         st.button(item, key=f"sorted3_{i}")
 
 items2 = server_state.dat2[1]['items']
-cols = st.columns(10)
+cols = st.columns(9)
 for i, item in enumerate(items2):
     with cols[i]:
         st.button(item, key=f"sorted4_{i}")
