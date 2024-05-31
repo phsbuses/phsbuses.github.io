@@ -103,6 +103,7 @@ if st.session_state["authentication_status"]:
     # server_state.dat = sorted.copy()
 
     server_state.dat2 = server_state.dat.copy()
+    st.write(server_state.dat2)
     # while (len(data2[0]['items']) < 7):
     #     server_state.dat2[0]['items'].insert(0,'none')
     # while (len(data2[1]['items']) < 7):
