@@ -16,7 +16,7 @@ credentials:
       #password: def
       password: $2b$12$0q0zkFkhJ0w7ls2YmpAJQuFKB9kffP06rpr2bW7z112E62Y0xD1EK
 cookie:
-  expiry_days: 30
+  expiry_days: 1
   key: random_signature_key # Must be string
   name: random_cookie_name
 preauthorized:
