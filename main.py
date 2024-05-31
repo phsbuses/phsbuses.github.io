@@ -25,8 +25,6 @@
 #     st.warning('Please enter your username and password')
 
 import streamlit as st
-import pandas as pd
-import numpy as np
 from streamlit_sortables import sort_items
 from streamlit_server_state import server_state, server_state_lock
 import yaml
