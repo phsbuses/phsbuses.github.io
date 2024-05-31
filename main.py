@@ -93,10 +93,7 @@ if st.session_state["authentication_status"]:
         st.session_state.show_sorted = not st.session_state.show_sorted
     # sorted = sort_items(server_state.dat, multi_containers=True)
     if st.session_state.show_sorted:
-        try:
-            sorted = sort_items(server_state.dat, multi_containers=True)
-        except IndexError:
-            st.error("One or more rows is filled")
+        sorted = sort_items(server_state.dat, multi_containers=True)
     # server_state.dat = sorted.copy()
     # draggable_item = sorted
     # for container in server_state.dat:
@@ -139,11 +136,17 @@ elif st.session_state["authentication_status"] is None:
 items1 = server_state.dat2[0]['items']
 cols = st.columns(9)
 for i, item in enumerate(items1):
-    with cols[i]:
-        st.button(item, key=f"sorted3_{i}")
+    try:
+        with cols[i]:
+            st.button(item, key=f"sorted3_{i}")
+    except IndexError:
+        st.error("One or more rows is filled")
 
 items2 = server_state.dat2[1]['items']
 cols = st.columns(9)
 for i, item in enumerate(items2):
-    with cols[i]:
-        st.button(item, key=f"sorted4_{i}")
+    try:
+        with cols[i]:
+            st.button(item, key=f"sorted4_{i}")
+    except IndexError:
+        st.error("One or more rows is filled")
